@@ -8,7 +8,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # picture = ?
     text = models.CharField(max_length=512)
-    created_date = models.DateTimeField(default=timezone.now())
+    created_date = models.DateTimeField(default=timezone.now)
 
 
 class Comment(models.Model):
