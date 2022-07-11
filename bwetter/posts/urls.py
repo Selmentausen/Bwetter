@@ -4,5 +4,5 @@ from .views import dashboard
 app_name = 'bwetter'
 
 urlpatterns = [
-    path('', dashboard, name='dashboard')
+    path('', dashboard, name='dashboard'),
 ]
