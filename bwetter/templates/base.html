@@ -12,9 +12,20 @@
 </head>
 <body>
 <section class="hero is-small is-info mb-4">
-    <div class="hero-body">
-        <h1 class="title is-1">Bwetter</h1>
-        <p class="subtitle is-4">Your tiny social network built with Django</p>
+    <div class="columns hero-body">
+        <div class="column is-10">
+            <h1 class="title is-1">Bwetter</h1>
+            <p class="subtitle is-4">Your tiny social network built with Django</p>
+        </div>
+        <div class="column">
+            <div class="block">
+                <a href="{% url 'user_profile:profile_list' %}">
+                    <button class="button is-dark is-outlined is-fullwidth">
+                        All Profiles
+                    </button>
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 <div class="container">
