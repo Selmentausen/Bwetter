@@ -26,6 +26,16 @@
                             <p>email: </p>
                         </div>
                     </div>
+                    <div class="column">
+                        <form method="post">
+                            {% csrf_token %}
+                            {% if profile in user.profile.follows.all %}
+                                <button class="button is-danger" name="follow" value="unfollow">Unfollow</button>
+                            {% else %}
+                                <button class="button is-info" name="follow" value="follow">Follow</button>
+                            {% endif %}
+                        </form>
+                    </div>
                     <div class="columns">
                         <div class="column block">
                             <h3 class="title is-4">Following:</h3>
@@ -61,7 +71,7 @@
         </div>
     </div>
     <div class="columns">
-
+        <h1 class="title is-2">Tweets:</h1>
     </div>
 </div>
 
