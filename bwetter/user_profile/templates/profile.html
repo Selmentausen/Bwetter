@@ -26,6 +26,7 @@
                             <p>email: </p>
                         </div>
                     </div>
+                    {% if profile.id != user.profile.id %}
                     <div class="column">
                         <form method="post">
                             {% csrf_token %}
@@ -36,6 +37,7 @@
                             {% endif %}
                         </form>
                     </div>
+                    {% endif %}
                     <div class="columns">
                         <div class="column block">
                             <h3 class="title is-4">Following:</h3>

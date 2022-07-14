@@ -13,7 +13,7 @@
 </head>
 <body>
 <section class="hero is-small is-info mb-4">
-    <div class="columns hero-body">
+    <div class="columns is-vcentered hero-body">
         <div class="column is-10">
             <h1 class="title is-1"><a href="/">Bwetter</a></h1>
             <p class="subtitle is-4">Your tiny social network built with Django</p>
@@ -26,6 +26,20 @@
                     </button>
                 </a>
             </div>
+            <div clas="block">
+                <a href="{% url 'posts:new_post' %}">
+                    <button class="button is-dark is-outlined is-fullwidth">
+                        New Bweet
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div>
+            <a aria-label="Profile" href="{% url 'user_profile:profile' user.profile.id %}">
+                <span class="icon is-large" aria-hidden="true">
+                    <i class="far fa-3x fa-user"></i>
+                </span>
+            </a>
         </div>
     </div>
 </section>
