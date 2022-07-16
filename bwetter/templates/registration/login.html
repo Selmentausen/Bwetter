@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="column">
+    {% if user.is_authenticated %}
+    <div class="box is-danger hero">
+        <p>You are already logged in</p>
+    </div>
+    {% else %}
+    <form class="box" method="POST">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">Username</label>
+            <div class="control">
+                <input class="input" name="username">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+                <input class="input" type="password" placeholder="********" name="password">
+            </div>
+        </div>
+        {% if form.errors %}
+        <p class="is-danger">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+        <input class="button is-primary" type="submit" value="Sign in">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

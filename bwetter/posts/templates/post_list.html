@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="column">
+{% if user.is_authenticated %}
+<div class="column is-three-quarters">
     {% for post in posts %}
     <div class="box">
         <div class="media">
@@ -43,4 +44,24 @@
     </div>
     {% endfor %}
 </div>
+<div class="column">
+    <div class="block">
+        <a href="{% url 'user_profile:profile_list' %}">
+            <button class="button is-dark is-outlined is-fullwidth">
+                All Profiles
+            </button>
+        </a>
+    </div>
+
+    <div clas="block">
+        <a href="{% url 'posts:new_post' %}">
+            <button class="button is-dark is-outlined is-fullwidth">
+                New Bweet
+            </button>
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="hero is-warning">You need to log-in to see bweets!</div>
+{% endif %}
 {% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Profile
+from .forms import RegisterForm
 
 
 # Create your views here.
@@ -19,3 +21,10 @@ def profile(request, pk):
             current_user_profile.follows.remove(viewing_profile)
         current_user_profile.save()
     return render(request, 'profile.html', {'profile': viewing_profile})
+
+
+def register(request):
+    form = RegisterForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        return redirect('login')
+    return render(request, 'register.html', {'form': form})

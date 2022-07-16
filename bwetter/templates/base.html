@@ -18,29 +18,36 @@
             <h1 class="title is-1"><a href="/">Bwetter</a></h1>
             <p class="subtitle is-4">Your tiny social network built with Django</p>
         </div>
-        <div class="column">
-            <div class="block">
-                <a href="{% url 'user_profile:profile_list' %}">
-                    <button class="button is-dark is-outlined is-fullwidth">
-                        All Profiles
-                    </button>
+        {% if user.is_authenticated %}
+        <div class="column"></div>
+        <div class="column columns has-text-centered">
+            <div class="column">
+                <a aria-label="Profile" href="{% url 'user_profile:profile' user.profile.id %}">
+                    <span class="icon is-large" aria-hidden="true">
+                        <i class="far fa-3x fa-user"></i>
+                    </span>
                 </a>
             </div>
-            <div clas="block">
-                <a href="{% url 'posts:new_post' %}">
-                    <button class="button is-dark is-outlined is-fullwidth">
-                        New Bweet
-                    </button>
+            <div class="column">
+                <a aria-label="Profile" href="{% url 'logout' %}?next=/">
+                    <span class="icon is-large" aria-hidden="true">
+                        <i class="fas fa-3x fa-sign-out-alt"></i>
+                    </span>
                 </a>
             </div>
         </div>
-        <div>
-            <a aria-label="Profile" href="{% url 'user_profile:profile' user.profile.id %}">
-                <span class="icon is-large" aria-hidden="true">
-                    <i class="far fa-3x fa-user"></i>
-                </span>
+        {% else %}
+        <div class="column"></div>
+        <div class="column is-1 right">
+            <a aria-label="Profile" href="{% url 'login' %}">
+                <button class="button hero is-link is-fullwidth">Sign-in</button>
+            </a>
+            <br>
+            <a aria-label="Profile" href="{% url 'user_profile:register' %}">
+                <button class="button hero is-success is-fullwidth">Sign-up</button>
             </a>
         </div>
+        {% endif %}
     </div>
 </section>
 <div class="container">

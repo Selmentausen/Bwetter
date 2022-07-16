@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 from .forms import PostForm
+from .models import Post
 
 
 # Create your views here.
 def dashboard(request):
     posts = []
-    for profile in request.user.profile.follows.all():
-        for post in profile.user.posts.all():
-            posts.append(post)
-    posts = sorted(posts, key=lambda s: s.created_date, reverse=True)
+    if request.user.is_authenticated:
+        print('hello')
+        posts = Post.objects.filter(user__profile__in=request.user.profile.follows.all()).order_by('created_date')
     return render(request, 'post_list.html', {'posts': posts})
 
 
