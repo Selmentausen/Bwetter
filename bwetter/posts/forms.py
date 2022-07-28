@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -16,10 +16,24 @@ class PostForm(forms.ModelForm):
         widget=forms.widgets.TextInput(attrs={
             'placeholder': 'Title of your bweet...',
             'class': 'input is-success',
-            'label': ''
+            'label': '',
         })
     )
 
     class Meta:
         model = Post
         exclude = ("user",)
+
+
+class CommentForm(forms.ModelForm):
+    text = forms.CharField(required=True, max_length=256,
+                           widget=forms.widgets.Textarea(attrs={
+                               'placeholder': 'Type your comment here...',
+                               'class': 'textarea is-info has-fixed-size',
+                               'rows': '3',
+                               'label': '',
+                           }))
+
+    class Meta:
+        model = Comment
+        fields = ('text',)

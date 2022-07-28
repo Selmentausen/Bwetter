@@ -26,5 +26,6 @@ def profile(request, pk):
 def register(request):
     form = RegisterForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
+        user = form.save()
         return redirect('login')
     return render(request, 'register.html', {'form': form})
