@@ -1,0 +1,1 @@
+Bwetter is a Django-based web application designed as a simplified clone of Twitter, created as a test project for learning Django. It allows users to sign up, log in, create "bweets" (posts), and interact with others' bweets through likes, shares, and comments.
